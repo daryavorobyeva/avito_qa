@@ -1,6 +1,6 @@
 # Задание 1
 
-Полный баг-репорт можно посмотреть по [ссылке в **Google Таблицы**](https://docs.google.com/spreadsheets/d/1dJFkLinvvvo4uR-AbqhXWZMQtBgT26UgRN3iwi44YhI/edit?usp=sharing) или в [файле avito_qa_task_1.xlsx](../task_1/avito_qa_task_1.xlsx)
+Полную таблицу с багами можно посмотреть по [ссылке в **Google Таблицы**](https://docs.google.com/spreadsheets/d/1dJFkLinvvvo4uR-AbqhXWZMQtBgT26UgRN3iwi44YhI/edit?usp=sharing) или в [файле avito_qa_task_1.xlsx](../task_1/avito_qa_task_1.xlsx)
 
 <br>
 
