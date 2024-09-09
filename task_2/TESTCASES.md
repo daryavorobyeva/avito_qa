@@ -119,3 +119,246 @@
         </tr>
     </tbody>
 </table>
+
+<br>
+
+### 3. POST Сохранить объявление
+<table>
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Заголовок</th>
+            <th>Предусловия</th>
+            <th>Тестовые данные</th>
+            <th>Шаги</th>
+            <th>Ожидаемый результат</th>
+            <th>Статус прохождения</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">3.1</td>
+            <td rowspan="3">Создание объявления с существующим sellerId</td>
+            <td rowspan="3">Пользователь с таким sellerId уже существует в системе</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
+    &nbsp;&nbsp;&nbsp;"price": 85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 3452,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": 14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Passed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 200 OK</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="3">3.2</td>
+            <td rowspan="3">Создание объявления с несуществующим положительным sellerId</td>
+            <td rowspan="3">Пользователь с sellerId не существует в системе</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
+    &nbsp;&nbsp;&nbsp;"price": 85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 223,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": 14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Passed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 200 OK</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="3">3.3</td>
+            <td rowspan="3">Создание объявления с несуществующим отрицательным sellerID</td>
+            <td rowspan="3">Пользователь с отрицательным sellerId не существует в системе</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "",<br>
+    &nbsp;&nbsp;&nbsp;"price": 85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": -5,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": 14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Failed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 400 Bad Request</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="3">3.4</td>
+            <td rowspan="3">Создание объявления с пустым полем name</td>
+            <td rowspan="3">Поле name должно быть обязательным</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "",<br>
+    &nbsp;&nbsp;&nbsp;"price": 85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 3452,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": 14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Failed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 400 Bad Request</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="3">3.5</td>
+            <td rowspan="3">Создание объявления с отрицательным полем price</td>
+            <td rowspan="3">Поле price должно принимать только неотрицательные значения</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
+    &nbsp;&nbsp;&nbsp;"price": -85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 3452,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": 14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Failed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 400 Bad Request</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="3">3.6</td>
+            <td rowspan="3">Создание объявления с отрицательным полем contacts</td>
+            <td rowspan="3">Поле contacts должно принимать только неотрицательные значения</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
+    &nbsp;&nbsp;&nbsp;"price": 85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 3452,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": -32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": 14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Failed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 400 Bad Request</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="3">3.7</td>
+            <td rowspan="3">Создание объявления с отрицательным полем like</td>
+            <td rowspan="3">Поле like должно принимать только неотрицательные значения</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
+    &nbsp;&nbsp;&nbsp;"price": 85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 3452,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": -35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": 14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Failed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 400 Bad Request</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="3">3.8</td>
+            <td rowspan="3">Создание объявления с отрицательным полем viewCount</td>
+            <td rowspan="3">Поле viewCount должно принимать только неотрицательные значения</td>
+            <td rowspan="3">
+    {<br>
+    &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
+    &nbsp;&nbsp;&nbsp;"price": 85566,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 3452,<br>
+    &nbsp;&nbsp;&nbsp;"statistics": {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"viewCount": -14<br>
+    &nbsp;&nbsp;&nbsp;}<br>
+    }
+</td>
+            <td>Отправить POST запрос <br>https://qa-internship.avito.com/api/1/item</td>
+            <td>Запрос успешно отправлен на сервер</td>
+            <td rowspan="3">Failed</td>
+        </tr>
+        <tr>
+            <td>Проверить код ответа</td>
+            <td>HTTP Status: 400 Bad Request</td>
+        </tr>
+        <tr>
+            <td>Проверить тело ответа</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
