@@ -1,5 +1,5 @@
 import requests
-import random
+from conftest import default_payload
 
 class TestGetById:
 
@@ -33,48 +33,23 @@ class TestGetBySellerId:
 
 class TestPostSaveItem:
 
-    def test_3_1_existing_seller_id(self, item_url, existing_seller_id):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": int(existing_seller_id),
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+    def test_3_1_existing_seller_id(self, item_url, default_payload):
+        response = requests.post(item_url, json=default_payload)
+        assert response.status_code == 200
+
+    def test_3_2_non_existent_positive_seller_id(self, item_url, default_payload,
+                                                 non_existent_positive_seller_id):
+        payload = default_payload.copy()
+        payload['sellerId']=non_existent_positive_seller_id
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 200
 
-    def test_3_2_non_existent_positive_seller_id(self, item_url):
-        non_existent_seller_id = random.randint(111111, 999999)
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": non_existent_seller_id,
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+    def test_3_3_non_existent_negative_seller_id(self, item_url, default_payload,
+                                                 non_existent_negative_seller_id):
 
-        response = requests.post(item_url, json=payload)
-        assert response.status_code == 200
-
-    def test_3_3_non_existent_negative_seller_id(self, item_url, non_existent_negative_seller_id):
-        payload = {
-            "name": "",
-            "price": 85566,
-            "sellerId": int(non_existent_negative_seller_id),
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+        payload = default_payload.copy()
+        payload['sellerId'] = non_existent_negative_seller_id
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -82,34 +57,20 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_4_item_with_empty_name(self, item_url):
-        payload = {
-            "name": "",
-            "price": 85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+    def test_3_4_item_with_empty_name(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['name'] = ""
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_5_item_with_negative_price(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": -85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+    def test_3_5_item_with_negative_price(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['price'] = -85566
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
@@ -117,154 +78,80 @@ class TestPostSaveItem:
         assert "error" in response_json or "message" in response_json
 
 
-    def test_3_6_item_with_negative_contacts(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": -32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+    def test_3_6_item_with_negative_contacts(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['contacts'] = -32
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_7_item_with_negative_like(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": -35,
-                "viewCount": 14
-            }
-        }
+    def test_3_7_item_with_negative_like(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['like'] = -35
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_8_item_with_negative_view_count(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": -14
-            }
-        }
+    def test_3_8_item_with_negative_view_count(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['viewCount'] = -14
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    '''
-    @pytest.fixture
-    def incorrect_price_type_payload(self):
-        # Фикстура для данных с некорректным типом данных в поле price
-        return {
-            "name": "Телефон",
-            "price": "abc",  # Некорректный тип данных для price (строка вместо числа)
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
-    '''
+    def test_3_9_item_with_incorrect_price_type(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['price'] = "abc"
 
-    def test_3_9_item_with_incorrect_price_type(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": "abc",
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_10_item_with_incorrect_contacts_type(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": "abc",
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+    def test_3_10_item_with_incorrect_contacts_type(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['contacts'] = "abc"
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_11_item_with_incorrect_like_type(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": "abc",
-                "viewCount": 14
-            }
-        }
+    def test_3_11_item_with_incorrect_like_type(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['like'] = "abc"
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_12_item_with_incorrect_view_count_type(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": 3452,
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": "abc"
-            }
-        }
+    def test_3_12_item_with_incorrect_view_count_type(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['viewCount'] = "abc"
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
-
-
 
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_13_item_with_incorrect_seller_id_type(self, item_url):
-        payload = {
-            "name": "Телефон",
-            "price": 85566,
-            "sellerId": "abc",
-            "statistics": {
-                "contacts": 32,
-                "like": 35,
-                "viewCount": 14
-            }
-        }
+    def test_3_13_item_with_incorrect_seller_id_type(self, item_url, default_payload):
+        payload = default_payload.copy()
+        payload['sellerId'] = "abc"
+
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
 
