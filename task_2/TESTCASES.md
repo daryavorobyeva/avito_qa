@@ -163,7 +163,7 @@
     {<br>
     &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
     &nbsp;&nbsp;&nbsp;"price": 85566,<br>
-    &nbsp;&nbsp;&nbsp;"sellerId": 223,<br>
+    &nbsp;&nbsp;&nbsp;"sellerId": 234567,<br>
     &nbsp;&nbsp;&nbsp;"statistics": {<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"contacts": 32,<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"like": 35,<br>
