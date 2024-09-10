@@ -105,7 +105,7 @@
         </tr>
         <tr>
             <td>Проверить код ответа</td>
-            <td>HTTP Status: 404 Not Found</td>
+            <td>HTTP Status: 200 OK</td>
         </tr>
         <tr>
             <td>Проверить тело ответа</td>
