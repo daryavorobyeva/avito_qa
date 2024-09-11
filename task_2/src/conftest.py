@@ -26,6 +26,30 @@ def existing_seller_id():
     return "3452"
 
 @pytest.fixture
+def empty_name():
+    return ""
+
+@pytest.fixture
+def negative_price():
+    return -85566
+
+@pytest.fixture
+def negative_contacts():
+    return -32
+
+@pytest.fixture
+def negative_like():
+    return -35
+
+@pytest.fixture
+def negative_view_count():
+    return -14
+
+@pytest.fixture
+def stroke():
+    return "abc"
+
+@pytest.fixture
 def without_items_seller_id():
     return "2222"
 

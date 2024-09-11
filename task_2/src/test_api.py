@@ -57,9 +57,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_4_item_with_empty_name(self, item_url, default_payload):
+    def test_3_4_item_with_empty_name(self, item_url, default_payload, empty_name):
         payload = default_payload.copy()
-        payload['name'] = ""
+        payload['name'] = empty_name
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -67,9 +67,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_5_item_with_negative_price(self, item_url, default_payload):
+    def test_3_5_item_with_negative_price(self, item_url, default_payload, negative_price):
         payload = default_payload.copy()
-        payload['price'] = -85566
+        payload['price'] = negative_price
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -78,9 +78,9 @@ class TestPostSaveItem:
         assert "error" in response_json or "message" in response_json
 
 
-    def test_3_6_item_with_negative_contacts(self, item_url, default_payload):
+    def test_3_6_item_with_negative_contacts(self, item_url, default_payload, negative_contacts):
         payload = default_payload.copy()
-        payload['contacts'] = -32
+        payload['contacts'] = negative_contacts
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -88,9 +88,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_7_item_with_negative_like(self, item_url, default_payload):
+    def test_3_7_item_with_negative_like(self, item_url, default_payload, negative_like):
         payload = default_payload.copy()
-        payload['like'] = -35
+        payload['like'] = negative_like
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -98,9 +98,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_8_item_with_negative_view_count(self, item_url, default_payload):
+    def test_3_8_item_with_negative_view_count(self, item_url, default_payload, negative_view_count):
         payload = default_payload.copy()
-        payload['viewCount'] = -14
+        payload['viewCount'] = negative_view_count
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -108,9 +108,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_9_item_with_incorrect_price_type(self, item_url, default_payload):
+    def test_3_9_item_with_incorrect_price_type(self, item_url, default_payload, stroke):
         payload = default_payload.copy()
-        payload['price'] = "abc"
+        payload['price'] = stroke
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -118,9 +118,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_10_item_with_incorrect_contacts_type(self, item_url, default_payload):
+    def test_3_10_item_with_incorrect_contacts_type(self, item_url, default_payload, stroke):
         payload = default_payload.copy()
-        payload['contacts'] = "abc"
+        payload['contacts'] = stroke
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -128,9 +128,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_11_item_with_incorrect_like_type(self, item_url, default_payload):
+    def test_3_11_item_with_incorrect_like_type(self, item_url, default_payload, stroke):
         payload = default_payload.copy()
-        payload['like'] = "abc"
+        payload['like'] = stroke
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -138,9 +138,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_12_item_with_incorrect_view_count_type(self, item_url, default_payload):
+    def test_3_12_item_with_incorrect_view_count_type(self, item_url, default_payload, stroke):
         payload = default_payload.copy()
-        payload['viewCount'] = "abc"
+        payload['viewCount'] = stroke
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
@@ -148,9 +148,9 @@ class TestPostSaveItem:
         response_json = response.json()
         assert "error" in response_json or "message" in response_json
 
-    def test_3_13_item_with_incorrect_seller_id_type(self, item_url, default_payload):
+    def test_3_13_item_with_incorrect_seller_id_type(self, item_url, default_payload, stroke):
         payload = default_payload.copy()
-        payload['sellerId'] = "abc"
+        payload['sellerId'] = stroke
 
         response = requests.post(item_url, json=payload)
         assert response.status_code == 400
