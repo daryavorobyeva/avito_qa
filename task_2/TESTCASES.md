@@ -347,7 +347,7 @@
         </tr>
         <tr>
             <td rowspan="3">3.9</td>
-            <td rowspan="3">Создание объявления с неккоректным типом данных в поле price</td>
+            <td rowspan="3">Создание объявления с некорректным типом данных в поле price</td>
             <td rowspan="3">
     {<br>
     &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
@@ -374,7 +374,7 @@
         </tr>
         <tr>
             <td rowspan="3">3.10</td>
-            <td rowspan="3">Создание объявления с неккоректным типом данных в поле contacts</td>
+            <td rowspan="3">Создание объявления с некорректным типом данных в поле contacts</td>
             <td rowspan="3">
     {<br>
     &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
@@ -401,7 +401,7 @@
         </tr>
         <tr>
             <td rowspan="3">3.11</td>
-            <td rowspan="3">Создание объявления с неккоректным типом данных в поле like</td>
+            <td rowspan="3">Создание объявления с некорректным типом данных в поле like</td>
             <td rowspan="3">
     {<br>
     &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
@@ -428,7 +428,7 @@
         </tr>
         <tr>
             <td rowspan="3">3.12</td>
-            <td rowspan="3">Создание объявления с неккоректным типом данных в поле viewCount</td>
+            <td rowspan="3">Создание объявления с некорректным типом данных в поле viewCount</td>
             <td rowspan="3">
     {<br>
     &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
@@ -455,7 +455,7 @@
         </tr>
         <tr>
             <td rowspan="3">3.13</td>
-            <td rowspan="3">Создание объявления с неккоректным типом данных в поле sellerId</td>
+            <td rowspan="3">Создание объявления с некорректным типом данных в поле sellerId</td>
             <td rowspan="3">
     {<br>
     &nbsp;&nbsp;&nbsp;"name": "Телефон",<br>
