@@ -2,11 +2,11 @@ import pytest
 import random
 
 # url
-@pytest.fixture
+@pytest.fixture(scope="session")
 def base_url():
     return "https://qa-internship.avito.com/api/1"
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def item_url(base_url):
     return f"{base_url}/item"
 
