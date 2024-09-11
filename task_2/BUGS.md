@@ -419,7 +419,7 @@
     </tr>
     <tr>
       <td>Приоритет</td>
-      <td>medium</td>
+      <td>high</td>
     </tr>
     <tr>
       <td>Окружение</td>
@@ -467,7 +467,7 @@
     </tr>
     <tr>
       <td>Приоритет</td>
-      <td>medium</td>
+      <td>high</td>
     </tr>
     <tr>
       <td>Окружение</td>
@@ -515,7 +515,7 @@
     </tr>
     <tr>
       <td>Приоритет</td>
-      <td>medium</td>
+      <td>high</td>
     </tr>
     <tr>
       <td>Окружение</td>
